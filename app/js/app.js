@@ -3,13 +3,22 @@
 
     var todomvc = angular.module('todomvc', []);
 
-    todomvc.controller('TodoCtrl', function TodoCtrl($scope, filterFilter, todoStorage) {
+    todomvc.controller('TodoCtrl', function TodoCtrl($scope, todoStorage) {
         $scope.todos = todoStorage.get();
 
         $scope.$watch('todos', function(todos) {
+            todoStorage.put(todos);
+        }, true);
+
+    });
+
+    todomvc.controller('TodoListCtrl', function TodoCtrl($scope, filterFilter) {
+        if(!$scope.todos) {
+            $scope.todos = [];
+        }
+        $scope.$watch('todos', function(todos) {
             $scope.remainingCount = filterFilter($scope.todos, $scope.filters.active).length;
             $scope.completedCount = filterFilter($scope.todos, $scope.filters.completed).length;
-            todoStorage.put(todos);
         }, true);
 
         $scope.filters = {
@@ -60,6 +69,17 @@
         }
     });
 
+    todomvc.directive('todoList', function() {
+       return {
+           controller: 'TodoListCtrl',
+           restrict: 'E',
+           templateUrl: '/app/partials/todoList.html',
+           scope: {
+               todos: '='
+           }
+       }
+    });
+
     todomvc.factory('todoStorage', function() {
         var STORAGE_ID = 'todos-angularjs';
 
@@ -84,7 +104,7 @@
 
     todomvc.directive('todoFocus', function() {
        return function(scope, elm, attrs) {
-           scope.$watch(attrs.focusWhen, function(value) {
+           scope.$watch(attrs.todoFocus, function(value) {
               if(value) {
                   scope.$evalAsync(function() {
                       elm[0].focus();
