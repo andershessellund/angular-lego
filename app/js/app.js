@@ -113,4 +113,10 @@
            });
        };
     });
+
+    todomvc.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/page1', {templateUrl: 'partials/page1.html', controller: 'TodoCtrl'});
+        $routeProvider.when('/page2', {templateUrl: 'partials/page2.html'});
+        $routeProvider.otherwise({redirectTo: '/page1'});
+    }]);
 })();
