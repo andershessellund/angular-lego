@@ -34,7 +34,8 @@
         </ul>
     </section>
     <footer id="footer">
-        <span id="todo-count"><strong>1234567</strong> items left</span>
+        <span id="todo-count"><strong>{{remainingCount}}</strong>
+            <ng-pluralize count="remainingCount" when="{one: 'item left', other: 'items left'}"></ng-pluralize></span>
         <ul id="filters">
             <li>
                 <a ng-class="{selected: filter == filters.all}" ng-click="setFilter(filters.all)">All</a>
