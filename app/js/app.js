@@ -74,4 +74,23 @@
         };
     });
 
+    todomvc.directive('todoBlur', function() {
+        return function( scope, elm, attrs ) {
+            elm.bind('blur', function() {
+                scope.$apply(attrs.todoBlur);
+            });
+        };
+    });
+
+    todomvc.directive('todoFocus', function() {
+       return function(scope, elm, attrs) {
+           scope.$watch(attrs.focusWhen, function(value) {
+              if(value) {
+                  scope.$evalAsync(function() {
+                      elm[0].focus();
+                  });
+              }
+           });
+       };
+    });
 })();
