@@ -11,7 +11,7 @@ function TodoCtrl($scope, filterFilter) {
         { completed: true, title: 'Fjern eksisterende TODO ved at trykke på krydset.' },
         { completed: true, title: '"XXX items left" skal vise korrekt antal.' },
         { completed: true, title: '"Clear completed (XXX)" skal rydde færdige TODOs og vise korrekt antal.' },
-        { completed: false, title: 'Mulighed for at markere/fravælge alle.' },
+        { completed: true, title: 'Mulighed for at markere/fravælge alle.' },
         { completed: false, title: 'Vis kun "main"-sektion hvis der overhovedet er nogen TODOs.' },
         { completed: false, title: 'Vis kun "footer"-sektion hvis der overhovedet er nogen TODOs.' },
         { completed: false, title: 'Gem listen af TODOs i localStorage.' }
@@ -61,6 +61,12 @@ function TodoCtrl($scope, filterFilter) {
 
     $scope.removeCompletedTodos = function() {
         $scope.todos = filterFilter($scope.todos, $scope.filters.active);
+    }
+
+    $scope.markAll = function(completed) {
+        $scope.todos.forEach(function(todo) {
+            todo.completed = completed;
+        });
     }
 }
 

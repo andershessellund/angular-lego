@@ -18,7 +18,7 @@
         </form>
     </header>
     <section id="main">
-        <input id="toggle-all" type="checkbox">
+        <input id="toggle-all" type="checkbox" ng-checked="completedCount == todos.length" ng-click="markAll(completedCount != todos.length)">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list">
             <li ng-repeat="todo in todos | filter:filter"  ng-class="{completed: todo.completed, editing: todo == editedTodo}">
