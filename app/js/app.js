@@ -5,7 +5,7 @@ function TodoCtrl($scope) {
         { completed: true, title: 'Vis liste af eksisterende TODOs (en mock-liste til at starte med).' },
         { completed: true, title: 'Markér TODO som færdig ved at klikke på flueben.' },
         { completed: true, title: '"All"/"Active"/"Completed" skal vise relevante TODOs.' },
-        { completed: false, title: 'Den aktuelle side ("All"/"Active"/"Completed") skal fremhæves.' },
+        { completed: true, title: 'Den aktuelle side ("All"/"Active"/"Completed") skal fremhæves.' },
         { completed: false, title: 'Skriv ny TODO ved at angive tekst og trykke enter.' },
         { completed: false, title: 'Redigér eksisterende TODO ved at dobbeltklikke på teksten og redigere.' },
         { completed: false, title: 'Fjern eksisterende TODO ved at trykke på krydset.' },
