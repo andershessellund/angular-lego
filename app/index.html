@@ -25,7 +25,7 @@
                 <div class="view">
                     <input class="toggle" type="checkbox" ng-model="todo.completed">
                     <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
-                    <button class="destroy"></button>
+                    <button class="destroy" ng-click="removeTodo(todo)"></button>
                 </div>
                 <form ng-submit="doneEditing(todo)">
                     <input class="edit" ng-model="todo.title">
