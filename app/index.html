@@ -21,9 +21,9 @@
         <input id="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list">
-            <li ng-repeat="todo in todos">
+            <li ng-repeat="todo in todos"  ng-class="{completed: todo.completed}">
                 <div class="view">
-                    <input class="toggle" type="checkbox">
+                    <input class="toggle" type="checkbox" ng-model="todo.completed">
                     <label>{{todo.title}}</label>
                     <button class="destroy"></button>
                 </div>
