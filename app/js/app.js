@@ -6,7 +6,7 @@ function TodoCtrl($scope) {
         { completed: true, title: 'Markér TODO som færdig ved at klikke på flueben.' },
         { completed: true, title: '"All"/"Active"/"Completed" skal vise relevante TODOs.' },
         { completed: true, title: 'Den aktuelle side ("All"/"Active"/"Completed") skal fremhæves.' },
-        { completed: false, title: 'Skriv ny TODO ved at angive tekst og trykke enter.' },
+        { completed: true, title: 'Skriv ny TODO ved at angive tekst og trykke enter.' },
         { completed: false, title: 'Redigér eksisterende TODO ved at dobbeltklikke på teksten og redigere.' },
         { completed: false, title: 'Fjern eksisterende TODO ved at trykke på krydset.' },
         { completed: false, title: '"XXX items left" skal vise korrekt antal.' },
@@ -27,6 +27,19 @@ function TodoCtrl($scope) {
 
     $scope.setFilter = function(filter) {
         $scope.filter = filter;
+    };
+
+    $scope.addTodo = function() {
+        if ($scope.newTodo === '') {
+            return;
+        }
+
+        $scope.todos.push({
+            title: $scope.newTodo,
+            completed: false
+        });
+
+        $scope.newTodo = '';
     };
 }
 
