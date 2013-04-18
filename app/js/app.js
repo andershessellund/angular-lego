@@ -18,7 +18,7 @@
             completed: {completed: true}
         };
 
-        $scope.filter = filters.all
+        $scope.filter = $scope.filters.all
 
         $scope.setFilter = function(filter) {
             $scope.filter = filter;
