@@ -10,7 +10,7 @@ function TodoCtrl($scope, filterFilter) {
         { completed: true, title: 'Redigér eksisterende TODO ved at dobbeltklikke på teksten og redigere.' },
         { completed: true, title: 'Fjern eksisterende TODO ved at trykke på krydset.' },
         { completed: true, title: '"XXX items left" skal vise korrekt antal.' },
-        { completed: false, title: '"Clear completed (XXX)" skal rydde færdige TODOs og vise korrekt antal.' },
+        { completed: true, title: '"Clear completed (XXX)" skal rydde færdige TODOs og vise korrekt antal.' },
         { completed: false, title: 'Mulighed for at markere/fravælge alle.' },
         { completed: false, title: 'Vis kun "main"-sektion hvis der overhovedet er nogen TODOs.' },
         { completed: false, title: 'Vis kun "footer"-sektion hvis der overhovedet er nogen TODOs.' },
@@ -19,6 +19,7 @@ function TodoCtrl($scope, filterFilter) {
 
     $scope.$watch('todos', function() {
         $scope.remainingCount = filterFilter($scope.todos, $scope.filters.active).length;
+        $scope.completedCount = filterFilter($scope.todos, $scope.filters.completed).length;
     }, true);
 
     $scope.filters = {
@@ -58,5 +59,8 @@ function TodoCtrl($scope, filterFilter) {
         $scope.todos.splice($scope.todos.indexOf(todo), 1);
     };
 
+    $scope.removeCompletedTodos = function() {
+        $scope.todos = filterFilter($scope.todos, $scope.filters.active);
+    }
 }
 

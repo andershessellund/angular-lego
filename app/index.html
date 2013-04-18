@@ -47,7 +47,7 @@
                 <a ng-class="{selected: filter == filters.completed}" ng-click="setFilter(filters.completed)">Completed</a>
             </li>
         </ul>
-        <button id="clear-completed">Clear completed (2345)</button>
+        <button id="clear-completed" ng-click="removeCompletedTodos()">Clear completed ({{completedCount}})</button>
     </footer>
 </section>
 <footer id="info">
